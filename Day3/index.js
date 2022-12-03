@@ -17,6 +17,7 @@ const {
   splitEvery,
   tap,
   findIndex,
+  intersection,
 } = require("ramda")
 const fs = require("fs")
 const scoreMap = pipe(
@@ -32,11 +33,7 @@ const getAnswerPartOne = input => {
     pipe(
       split(""),
       splitAt(line.length / 2),
-      map(uniq),
-      flatten,
-      groupBy(identity),
-      toPairs,
-      find(([, arr]) => arr.length == 2),
+      arr => intersection(arr[0], arr[1]),
       head,
       a => scoreMap[a]
     )(line)
