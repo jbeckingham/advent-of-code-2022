@@ -13,6 +13,8 @@ const resultScoreMap = {
   Z: 6,
 }
 
+// A = rock, B = paper, C = scissors
+// X = rock, Y = paper, Z = scissors
 const resultMap = {
   X: {A: 3, B: 0, C: 6},
   Y: {A: 6, B: 3, C: 0},
@@ -25,9 +27,8 @@ const moveToPlayMap = {
   C: {X: "Y", Y: "Z", Z: "X"},
 }
 
-const getScorePart1 = ([opponentMove, yourMove]) => {
-  return moveScoreMap[yourMove] + resultMap[yourMove][opponentMove]
-}
+const getScorePart1 = ([opponentMove, yourMove]) =>
+  moveScoreMap[yourMove] + resultMap[yourMove][opponentMove]
 
 const getScorePart2 = ([opponentMove, outcome]) => {
   const moveToPlay = moveToPlayMap[opponentMove][outcome]
